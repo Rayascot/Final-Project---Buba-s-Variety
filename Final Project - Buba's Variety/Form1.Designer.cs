@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             frontCustomerImage = new PictureBox();
             customerName = new Label();
             chowOutput = new Label();
             RaincoatOutput = new Label();
             malkOutput = new Label();
-            label4 = new Label();
-            label5 = new Label();
+            plushiesOutput = new Label();
+            treatgiverOutput = new Label();
             addChowButton = new Button();
             addRaincoatButton = new Button();
             addMalkButton = new Button();
-            button4 = new Button();
+            addPlushiesButton = new Button();
             button5 = new Button();
             calculatorButton = new Button();
             totalGiveButton = new Button();
@@ -49,12 +50,18 @@
             stockChowButton = new Button();
             stockRaincoatButton = new Button();
             stockMalkButton = new Button();
-            button9 = new Button();
+            stockPlushiesButton = new Button();
             button10 = new Button();
-            label7 = new Label();
+            linetimeOutputLabel = new Label();
             eventPeriodLabel = new Label();
             timeLeftOutput = new Label();
             lineTimeOutput = new Label();
+            playButton = new Button();
+            label1 = new Label();
+            Playtime = new System.Windows.Forms.Timer(components);
+            CurrentCustomer = new System.Windows.Forms.Timer(components);
+            secondCustomer = new System.Windows.Forms.Timer(components);
+            entrance = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)frontCustomerImage).BeginInit();
             SuspendLayout();
             // 
@@ -62,7 +69,6 @@
             // 
             frontCustomerImage.BackColor = Color.Azure;
             frontCustomerImage.BorderStyle = BorderStyle.FixedSingle;
-            frontCustomerImage.Image = Properties.Resources.iconfinder_dog_4591896_122115;
             frontCustomerImage.ImageLocation = "front";
             frontCustomerImage.Location = new Point(530, 41);
             frontCustomerImage.Name = "frontCustomerImage";
@@ -73,7 +79,7 @@
             // customerName
             // 
             customerName.Font = new Font("Jokerman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            customerName.Location = new Point(548, 515);
+            customerName.Location = new Point(554, 513);
             customerName.Name = "customerName";
             customerName.Size = new Size(501, 39);
             customerName.TabIndex = 1;
@@ -82,7 +88,7 @@
             // 
             // chowOutput
             // 
-            chowOutput.Location = new Point(12, 59);
+            chowOutput.Location = new Point(12, 62);
             chowOutput.Name = "chowOutput";
             chowOutput.Size = new Size(176, 25);
             chowOutput.TabIndex = 2;
@@ -90,7 +96,7 @@
             // 
             // RaincoatOutput
             // 
-            RaincoatOutput.Location = new Point(12, 105);
+            RaincoatOutput.Location = new Point(12, 99);
             RaincoatOutput.Name = "RaincoatOutput";
             RaincoatOutput.Size = new Size(176, 25);
             RaincoatOutput.TabIndex = 3;
@@ -99,29 +105,27 @@
             // 
             // malkOutput
             // 
-            malkOutput.Location = new Point(12, 145);
+            malkOutput.Location = new Point(12, 135);
             malkOutput.Name = "malkOutput";
             malkOutput.Size = new Size(176, 25);
             malkOutput.TabIndex = 4;
             malkOutput.Text = "Malk: X0";
             // 
-            // label4
+            // plushiesOutput
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(50, 189);
-            label4.Name = "label4";
-            label4.Size = new Size(104, 22);
-            label4.TabIndex = 5;
-            label4.Text = "Snackies: X0";
+            plushiesOutput.Location = new Point(12, 173);
+            plushiesOutput.Name = "plushiesOutput";
+            plushiesOutput.Size = new Size(176, 22);
+            plushiesOutput.TabIndex = 5;
+            plushiesOutput.Text = "Plushies: X0";
             // 
-            // label5
+            // treatgiverOutput
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(50, 282);
-            label5.Name = "label5";
-            label5.Size = new Size(56, 22);
-            label5.TabIndex = 6;
-            label5.Text = "label5";
+            treatgiverOutput.Location = new Point(12, 204);
+            treatgiverOutput.Name = "treatgiverOutput";
+            treatgiverOutput.Size = new Size(176, 22);
+            treatgiverOutput.TabIndex = 6;
+            treatgiverOutput.Text = "TreatGiver: X0";
             // 
             // addChowButton
             // 
@@ -134,7 +138,7 @@
             // 
             // addRaincoatButton
             // 
-            addRaincoatButton.Location = new Point(194, 108);
+            addRaincoatButton.Location = new Point(194, 96);
             addRaincoatButton.Name = "addRaincoatButton";
             addRaincoatButton.Size = new Size(55, 29);
             addRaincoatButton.TabIndex = 8;
@@ -143,25 +147,25 @@
             // 
             // addMalkButton
             // 
-            addMalkButton.Location = new Point(194, 153);
+            addMalkButton.Location = new Point(194, 131);
             addMalkButton.Name = "addMalkButton";
             addMalkButton.Size = new Size(55, 29);
             addMalkButton.TabIndex = 9;
             addMalkButton.Text = "Add";
             addMalkButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // addPlushiesButton
             // 
-            button4.Location = new Point(194, 198);
-            button4.Name = "button4";
-            button4.Size = new Size(55, 29);
-            button4.TabIndex = 10;
-            button4.Text = "Add";
-            button4.UseVisualStyleBackColor = true;
+            addPlushiesButton.Location = new Point(194, 166);
+            addPlushiesButton.Name = "addPlushiesButton";
+            addPlushiesButton.Size = new Size(55, 29);
+            addPlushiesButton.TabIndex = 10;
+            addPlushiesButton.Text = "Add";
+            addPlushiesButton.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            button5.Location = new Point(194, 275);
+            button5.Location = new Point(194, 204);
             button5.Name = "button5";
             button5.Size = new Size(55, 29);
             button5.TabIndex = 11;
@@ -176,6 +180,7 @@
             calculatorButton.TabIndex = 12;
             calculatorButton.Text = "Open \r\nCalculator\r\n";
             calculatorButton.UseVisualStyleBackColor = true;
+            calculatorButton.Click += calculatorButton_Click;
             // 
             // totalGiveButton
             // 
@@ -217,16 +222,17 @@
             // 
             // stockChowButton
             // 
-            stockChowButton.Location = new Point(353, 56);
+            stockChowButton.Location = new Point(267, 59);
             stockChowButton.Name = "stockChowButton";
             stockChowButton.Size = new Size(61, 29);
             stockChowButton.TabIndex = 17;
             stockChowButton.Text = "Stock";
             stockChowButton.UseVisualStyleBackColor = true;
+            stockChowButton.Click += stockChowButton_Click;
             // 
             // stockRaincoatButton
             // 
-            stockRaincoatButton.Location = new Point(353, 108);
+            stockRaincoatButton.Location = new Point(267, 94);
             stockRaincoatButton.Name = "stockRaincoatButton";
             stockRaincoatButton.Size = new Size(61, 29);
             stockRaincoatButton.TabIndex = 18;
@@ -235,39 +241,39 @@
             // 
             // stockMalkButton
             // 
-            stockMalkButton.Location = new Point(353, 153);
+            stockMalkButton.Location = new Point(267, 129);
             stockMalkButton.Name = "stockMalkButton";
             stockMalkButton.Size = new Size(61, 29);
             stockMalkButton.TabIndex = 19;
             stockMalkButton.Text = "Stock";
             stockMalkButton.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // stockPlushiesButton
             // 
-            button9.Location = new Point(353, 199);
-            button9.Name = "button9";
-            button9.Size = new Size(61, 29);
-            button9.TabIndex = 20;
-            button9.Text = "Stock";
-            button9.UseVisualStyleBackColor = true;
+            stockPlushiesButton.Location = new Point(267, 166);
+            stockPlushiesButton.Name = "stockPlushiesButton";
+            stockPlushiesButton.Size = new Size(61, 29);
+            stockPlushiesButton.TabIndex = 20;
+            stockPlushiesButton.Text = "Stock";
+            stockPlushiesButton.UseVisualStyleBackColor = true;
             // 
             // button10
             // 
-            button10.Location = new Point(353, 275);
+            button10.Location = new Point(267, 204);
             button10.Name = "button10";
             button10.Size = new Size(61, 29);
             button10.TabIndex = 21;
             button10.Text = "Stock";
             button10.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // linetimeOutputLabel
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(210, 550);
-            label7.Name = "label7";
-            label7.Size = new Size(55, 22);
-            label7.TabIndex = 22;
-            label7.Text = "label7";
+            linetimeOutputLabel.ForeColor = Color.FromArgb(255, 128, 128);
+            linetimeOutputLabel.Location = new Point(28, 385);
+            linetimeOutputLabel.Name = "linetimeOutputLabel";
+            linetimeOutputLabel.Size = new Size(350, 22);
+            linetimeOutputLabel.TabIndex = 22;
+            linetimeOutputLabel.Text = "3rd-5th In Line Time left: 450";
             // 
             // eventPeriodLabel
             // 
@@ -288,11 +294,42 @@
             // lineTimeOutput
             // 
             lineTimeOutput.ForeColor = Color.FromArgb(255, 128, 128);
-            lineTimeOutput.Location = new Point(28, 421);
+            lineTimeOutput.Location = new Point(28, 345);
             lineTimeOutput.Name = "lineTimeOutput";
-            lineTimeOutput.Size = new Size(331, 25);
+            lineTimeOutput.Size = new Size(350, 25);
             lineTimeOutput.TabIndex = 25;
-            lineTimeOutput.Text = "2nd In Line Time left: 400";
+            lineTimeOutput.Text = "2nd In Line Time left: 350";
+            // 
+            // playButton
+            // 
+            playButton.BackColor = Color.MidnightBlue;
+            playButton.Font = new Font("Jokerman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            playButton.ForeColor = Color.White;
+            playButton.Location = new Point(28, 584);
+            playButton.Name = "playButton";
+            playButton.Size = new Size(120, 65);
+            playButton.TabIndex = 26;
+            playButton.Text = "Play";
+            playButton.UseVisualStyleBackColor = false;
+            playButton.Click += playButton_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(28, 299);
+            label1.Name = "label1";
+            label1.Size = new Size(251, 22);
+            label1.TabIndex = 27;
+            label1.Text = "A Customer Has entered the line";
+            label1.Visible = false;
+            // 
+            // Playtime
+            // 
+            Playtime.Interval = 1000;
+            // 
+            // secondCustomer
+            // 
+            secondCustomer.Tick += timer3_Tick;
             // 
             // Form1
             // 
@@ -300,12 +337,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
             ClientSize = new Size(1125, 661);
+            Controls.Add(label1);
+            Controls.Add(playButton);
             Controls.Add(lineTimeOutput);
             Controls.Add(timeLeftOutput);
             Controls.Add(eventPeriodLabel);
-            Controls.Add(label7);
+            Controls.Add(linetimeOutputLabel);
             Controls.Add(button10);
-            Controls.Add(button9);
+            Controls.Add(stockPlushiesButton);
             Controls.Add(stockMalkButton);
             Controls.Add(stockRaincoatButton);
             Controls.Add(stockChowButton);
@@ -315,12 +354,12 @@
             Controls.Add(totalGiveButton);
             Controls.Add(calculatorButton);
             Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(addPlushiesButton);
             Controls.Add(addMalkButton);
             Controls.Add(addRaincoatButton);
             Controls.Add(addChowButton);
-            Controls.Add(label5);
-            Controls.Add(label4);
+            Controls.Add(treatgiverOutput);
+            Controls.Add(plushiesOutput);
             Controls.Add(malkOutput);
             Controls.Add(RaincoatOutput);
             Controls.Add(chowOutput);
@@ -342,12 +381,12 @@
         private Label chowOutput;
         private Label RaincoatOutput;
         private Label malkOutput;
-        private Label label4;
-        private Label label5;
+        private Label plushiesOutput;
+        private Label treatgiverOutput;
         private Button addChowButton;
         private Button addRaincoatButton;
         private Button addMalkButton;
-        private Button button4;
+        private Button addPlushiesButton;
         private Button button5;
         private Button calculatorButton;
         private Button totalGiveButton;
@@ -357,11 +396,17 @@
         private Button stockChowButton;
         private Button stockRaincoatButton;
         private Button stockMalkButton;
-        private Button button9;
+        private Button stockPlushiesButton;
         private Button button10;
-        private Label label7;
+        private Label linetimeOutputLabel;
         private Label eventPeriodLabel;
         private Label timeLeftOutput;
         private Label lineTimeOutput;
+        private Button playButton;
+        private Label label1;
+        private System.Windows.Forms.Timer Playtime;
+        private System.Windows.Forms.Timer CurrentCustomer;
+        private System.Windows.Forms.Timer secondCustomer;
+        private System.Windows.Forms.Timer entrance;
     }
 }
