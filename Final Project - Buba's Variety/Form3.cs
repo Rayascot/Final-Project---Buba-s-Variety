@@ -16,5 +16,35 @@ namespace Final_Project___Buba_s_Variety
         {
             InitializeComponent();
         }
+
+        private void calcuButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void firstSetButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void secondsSetButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void subButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void multiplyButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

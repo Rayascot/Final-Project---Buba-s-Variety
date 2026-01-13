@@ -13,6 +13,7 @@ namespace Final_Project___Buba_s_Variety
             ApplicationConfiguration.Initialize();
             Application.Run(new chaosForm());
             Application.Run(new Form1());
+            Application.Run(new Form3());
         }
     }
 }
