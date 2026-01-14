@@ -21,7 +21,7 @@ namespace Final_Project___Buba_s_Variety
         private void bonktick_Tick(object sender, EventArgs e)
         {
             bonksClick();
-            if (numbonk == 10) { 
+            if (numbonk >= 10) { 
                 this.Close(); }
         }
         private void bonksClick()
@@ -35,7 +35,7 @@ namespace Final_Project___Buba_s_Variety
         }
         private void label1_Click(object sender, EventArgs e)
         {
-            numbonk = 0;
+            numbonk += 1;
             bonksClick();
             bonktick.Enabled = true;
         }

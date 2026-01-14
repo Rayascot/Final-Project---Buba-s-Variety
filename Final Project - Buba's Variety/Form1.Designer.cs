@@ -46,7 +46,7 @@
             totalGiveButton = new Button();
             totalTextBox = new TextBox();
             label6 = new Label();
-            requestItemButtons = new Label();
+            requestItems = new Label();
             stockChowButton = new Button();
             stockRaincoatButton = new Button();
             stockMalkButton = new Button();
@@ -65,6 +65,7 @@
             coinOutput = new Label();
             debtOutput = new Label();
             TimePlayedOutput = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)frontCustomerImage).BeginInit();
             SuspendLayout();
             // 
@@ -225,15 +226,15 @@
             label6.TabIndex = 15;
             label6.Text = "Enter total";
             // 
-            // requestItemButtons
+            // requestItems
             // 
-            requestItemButtons.BackColor = Color.SteelBlue;
-            requestItemButtons.Location = new Point(420, 80);
-            requestItemButtons.Name = "requestItemButtons";
-            requestItemButtons.Size = new Size(153, 290);
-            requestItemButtons.TabIndex = 16;
-            requestItemButtons.Text = "I want";
-            requestItemButtons.TextAlign = ContentAlignment.TopCenter;
+            requestItems.BackColor = Color.SteelBlue;
+            requestItems.Location = new Point(420, 80);
+            requestItems.Name = "requestItems";
+            requestItems.Size = new Size(153, 290);
+            requestItems.TabIndex = 16;
+            requestItems.Text = "I want";
+            requestItems.TextAlign = ContentAlignment.TopCenter;
             // 
             // stockChowButton
             // 
@@ -362,9 +363,10 @@
             coinOutput.ForeColor = Color.Yellow;
             coinOutput.Location = new Point(28, 441);
             coinOutput.Name = "coinOutput";
-            coinOutput.Size = new Size(157, 57);
+            coinOutput.Size = new Size(393, 57);
             coinOutput.TabIndex = 28;
-            coinOutput.Text = "Coins: 50";
+            coinOutput.Text = "Coins: 100";
+            coinOutput.Click += coinOutput_Click;
             // 
             // debtOutput
             // 
@@ -387,12 +389,24 @@
             TimePlayedOutput.TabIndex = 30;
             TimePlayedOutput.Text = "Time Played: 0";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(64, 64, 64);
+            label1.ForeColor = Color.Yellow;
+            label1.Location = new Point(171, 515);
+            label1.Name = "label1";
+            label1.Size = new Size(250, 132);
+            label1.TabIndex = 31;
+            label1.Text = "Price guide: \r\nChow =5 to buy, 7 to sell\r\nRaincoat = 8 to buy, 10 to sell\r\nMalk = 2 to buy, 4 to sell\r\nPlusies = 4 to buy, 6 to sell\r\nTreatGiver = 12 to buy, 15 to sell.";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
             ClientSize = new Size(1125, 661);
+            Controls.Add(label1);
             Controls.Add(TimePlayedOutput);
             Controls.Add(debtOutput);
             Controls.Add(coinOutput);
@@ -407,7 +421,7 @@
             Controls.Add(stockMalkButton);
             Controls.Add(stockRaincoatButton);
             Controls.Add(stockChowButton);
-            Controls.Add(requestItemButtons);
+            Controls.Add(requestItems);
             Controls.Add(label6);
             Controls.Add(totalTextBox);
             Controls.Add(totalGiveButton);
@@ -451,7 +465,7 @@
         private Button totalGiveButton;
         private TextBox totalTextBox;
         private Label label6;
-        private Label requestItemButtons;
+        private Label requestItems;
         private Button stockChowButton;
         private Button stockRaincoatButton;
         private Button stockMalkButton;
@@ -470,5 +484,6 @@
         private Label coinOutput;
         private Label debtOutput;
         private Label TimePlayedOutput;
+        private Label label1;
     }
 }
