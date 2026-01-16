@@ -141,6 +141,8 @@
             addChowButton.TabIndex = 7;
             addChowButton.Text = "Add";
             addChowButton.UseVisualStyleBackColor = false;
+            addChowButton.Visible = false;
+            addChowButton.Click += addChowButton_Click;
             // 
             // addRaincoatButton
             // 
@@ -152,6 +154,8 @@
             addRaincoatButton.TabIndex = 8;
             addRaincoatButton.Text = "Add";
             addRaincoatButton.UseVisualStyleBackColor = false;
+            addRaincoatButton.Visible = false;
+            addRaincoatButton.Click += addRaincoatButton_Click;
             // 
             // addMalkButton
             // 
@@ -163,6 +167,8 @@
             addMalkButton.TabIndex = 9;
             addMalkButton.Text = "Add";
             addMalkButton.UseVisualStyleBackColor = false;
+            addMalkButton.Visible = false;
+            addMalkButton.Click += addMalkButton_Click;
             // 
             // addPlushiesButton
             // 
@@ -174,6 +180,8 @@
             addPlushiesButton.TabIndex = 10;
             addPlushiesButton.Text = "Add";
             addPlushiesButton.UseVisualStyleBackColor = false;
+            addPlushiesButton.Visible = false;
+            addPlushiesButton.Click += addPlushiesButton_Click;
             // 
             // addTreatGiverButton
             // 
@@ -185,6 +193,8 @@
             addTreatGiverButton.TabIndex = 11;
             addTreatGiverButton.Text = "Add";
             addTreatGiverButton.UseVisualStyleBackColor = false;
+            addTreatGiverButton.Visible = false;
+            addTreatGiverButton.Click += addTreatGiverButton_Click;
             // 
             // calculatorButton
             // 
@@ -352,6 +362,10 @@
             // 
             Playtime.Interval = 1000;
             Playtime.Tick += Playtime_Tick;
+            // 
+            // CurrentCustomer
+            // 
+            CurrentCustomer.Tick += CurrentCustomer_Tick;
             // 
             // secondCustomer
             // 
