@@ -8,8 +8,7 @@ namespace Final_Project___Buba_s_Variety
         int raincoat, chow, malk, plushies, treatgiver;
         int playingtime;
         int firstMer = 300;
-        int secondMer = 350;
-        int lastmer = 400;
+        //Decided to get rid of waiting customer timers to save on remaing time.
         int wantset;
         int UserTotal;
         int score;
@@ -30,6 +29,7 @@ namespace Final_Project___Buba_s_Variety
                 stockPlushiesButton.Enabled = false;
                 stockRaincoatButton.Enabled = false;
                 stockTreatGiverButton.Enabled = false;
+                debtOutput.Visible = false;
             }
             else if (coins < 0)
             {
@@ -42,6 +42,24 @@ namespace Final_Project___Buba_s_Variety
                 coinOutput.Text = $"Coins: -{coins}";
             }
 
+        } 
+        private void Stockingtime()
+        { if (daycycle == 2)
+            {
+                stockChowButton.Enabled = true;
+                stockMalkButton.Enabled = true;
+                stockPlushiesButton.Enabled = true;
+                stockRaincoatButton.Enabled = true;
+                stockTreatGiverButton.Enabled = true;
+            }
+            else
+            {
+                stockChowButton.Enabled = false;
+                stockMalkButton.Enabled = false;
+                stockPlushiesButton.Enabled = false;
+                stockRaincoatButton.Enabled = false;
+                stockTreatGiverButton.Enabled = false;
+            }
         }
         private void button7_Click(object sender, EventArgs e)
         {//total button
@@ -115,10 +133,10 @@ namespace Final_Project___Buba_s_Variety
                         else { score -= 1; }
                         break;
                     case (8):
-                        if (UserTotal == 29)
+                        if (UserTotal == 32)
                         {
                             score += 5;
-                            coins += 29;
+                            coins += 32;
                         }
                         else { score -= 1; }
                         break;
@@ -151,6 +169,16 @@ namespace Final_Project___Buba_s_Variety
                 {
                     chaosForm CF = new chaosForm();
                     CF.ShowDialog();
+                } 
+                if (NPC==5)
+                {
+                    daycycle += 1;
+                    Stockingtime();
+                    Playtime.Enabled=false;
+                    coinManagement();
+                    totalGiveButton.Enabled=false;
+                    eventPeriodLabel.Text = "Stocking period: Active";
+                    requestItems.Text = "I want";
                 }
             }
             catch { requestItems.Text += "Error"; }
@@ -166,14 +194,63 @@ namespace Final_Project___Buba_s_Variety
 
         }
         private void NPCEnter()
-        {//presets decided for the enterance for 1st in line customers
+        { //output to say if a customer has entered the shop
+            custNotifcation.Visible = true;
+            Random UI = new Random();
+            int npcUI = UI.Next(1,15);
+            switch(npcUI)
+            {
+                case 1: frontCustomerImage.Image = Properties.Resources.animal_dog_115245;
+                    customerName.Text = "PupperMan";
+                    break;
+                case 2: frontCustomerImage.Image = Properties.Resources.bear_wild_animal_wildlife_nature_big_fur_icon_127304;
+                    customerName.Text = "Goldy";
+                    break;
+                case 3: frontCustomerImage.Image = Properties.Resources.black_cat_halloween_icon_155986;
+                    customerName.Text = "Lucky";
+                    break;
+                case 4: frontCustomerImage.Image = Properties.Resources.fox_scarf_icon_159308;
+                    customerName.Text = "Snooch";
+                    break;
+                case 5: frontCustomerImage.Image = Properties.Resources._94_85291;
+                    customerName.Text = "Uni";
+                    break;
+                case 6: frontCustomerImage.Image = Properties.Resources.iconfinder_dog_4591896_122115;
+                    customerName.Text = "Tism";
+                    break;
+                case 7: frontCustomerImage.Image = Properties.Resources.valentine_teddy_bear_love_valentines_romantic_gift_icon_179616;
+                    customerName.Text = "Val";
+                    break;
+                case 8: frontCustomerImage.Image = Properties.Resources._10_info_cat_icon_icons_com_76686;
+                    customerName.Text = "Fluff";
+                    break;
+                case 9: frontCustomerImage.Image = Properties.Resources.iconfinder_husky_dog_4591888_122123;
+                    customerName.Text = "Cloudy & Meatballs";
+                    break;
+                case 10: frontCustomerImage.Image = Properties.Resources._446foxface2_100697;
+                    customerName.Text = "Impulsive";
+                    break;
+                case 11: frontCustomerImage.Image = Properties.Resources._39_85225;
+                    customerName.Text = "Lil dude";
+                    break;
+                case 12: frontCustomerImage.Image = Properties.Resources.dogbaby_119594;
+                    customerName.Text = "Child";
+                    break;
+                case 13: frontCustomerImage.Image = Properties.Resources.iconfinder_bird_4591877_122110;
+                    customerName.Text = "The great";
+                    break;
+                case 14: frontCustomerImage.Image = Properties.Resources._22226horseface_98740;
+                    customerName.Text = "Grain";
+                    break;
+            }
+            //presets decided for the enterance for 1st in line customers
 
             wantset = monies.Next(1, 11);
             switch (wantset)
             {
                 case (1):
                     requestItems.Text += "\n" + "Chow X2" + "\n" + "TreatGiver X1";
-                    if (chow >=2 || treatgiver >=1)
+                    if (chow >=2 && treatgiver >=1)
                     {
                         chow -= 2;
                         treatgiver -= 2;
@@ -187,7 +264,7 @@ namespace Final_Project___Buba_s_Variety
                         break;
                 case (2):
                     requestItems.Text += "\n" + "Raincoat X1" + "\n" + "Malk X2" + "\n" + "Plushie X1";
-                    if (raincoat >= 1 || malk >= 2 || plushies >= 1)
+                    if (raincoat >= 1 && malk >= 2 && plushies >= 1)
                     {
                         raincoat -= 1;
                         malk -= 2;
@@ -203,7 +280,7 @@ namespace Final_Project___Buba_s_Variety
                         break;
                 case (3):
                     requestItems.Text += "\n" + "Chow X3" + "\n" + "Plushie X2";
-                    if (chow >=3|| plushies>=2)
+                    if (chow >=3 && plushies>=2)
                     {
                         chow -= 3;
                         plushies -= 2;
@@ -217,7 +294,7 @@ namespace Final_Project___Buba_s_Variety
                         break;
                 case (4):
                     requestItems.Text += "\n" + "Chow X1" + "\n" + "Malk X2" + "\n" + "Plushie X1";
-                    if (chow >=1|| malk>=2|| plushies>=1)
+                    if (chow >=1&& malk>=2&& plushies>=1)
                     {
                         chow -= 1;
                         malk -= 2;
@@ -225,7 +302,7 @@ namespace Final_Project___Buba_s_Variety
                         chowOutput.Text = $"Chow: X{chow}";
                         plushiesOutput.Text = $"Plushies: X{plushies}";
                         malkOutput.Text = $"Malk: X{malk}";
-                    } else if (chow<1|| malk<2|| plushies<1)
+                    } else 
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
                         
@@ -245,7 +322,7 @@ namespace Final_Project___Buba_s_Variety
                         break;
                 case (6):
                     requestItems.Text += "\n" + "Chow X2" + "\n" + "Raincoat X1";
-                    if (chow >=2|| raincoat>=1)
+                    if (chow >=2 && raincoat>=1)
                     {
                         chow -= 2;
                         raincoat -= 1;
@@ -259,7 +336,7 @@ namespace Final_Project___Buba_s_Variety
                         break;
                 case (7):
                     requestItems.Text += "\n" + "Chow X2" + "\n" + "Raincoat X2" + "\n" + "Malk X4" + "\n" + "Plushie X1";
-                    if (chow>=2|| raincoat>=2|| malk >=4|| plushies>=1)
+                    if (chow>=2 && raincoat>=2&& malk >=4&& plushies>=1)
                     {
                         chow -= 2;
                         raincoat -= 2;
@@ -277,7 +354,7 @@ namespace Final_Project___Buba_s_Variety
                         break;
                 case (8):
                     requestItems.Text += "\n" + "Chow X4" + "\n" + "Malk x1";
-                    if (chow >=4|| malk>=1)
+                    if (chow >=4&& malk>=1)
                     {
                         chow -= 4;
                         malk -= 1;
@@ -291,7 +368,7 @@ namespace Final_Project___Buba_s_Variety
                         break;
                 case (9):
                     requestItems.Text += "\n" + "Chow X1" + "\n" + "Raincoat X1" + "\n" + "Treatgiver X1";
-                    if (chow>=1||raincoat>=1||treatgiver>=1)
+                    if (chow>=1&&raincoat>=1 &&treatgiver>=1)
                     {
                         chow -= 1;
                         raincoat -= 1;
@@ -307,7 +384,7 @@ namespace Final_Project___Buba_s_Variety
                         break;
                 case (10):
                     requestItems.Text += "\n" + "Chow X1" + "\n" + "Raincoat X1" + "\n" + "Malk X1" + "\n" + "Plushies X1" + "\n" + "Treatgiver X1";
-                    if (chow >= 1 || raincoat >= 1 || treatgiver >= 1||malk >=1||plushies>=1)
+                    if (chow >= 1 && raincoat >= 1 && treatgiver >= 1 && malk >=1 &&plushies>=1)
                     {
                         chow -= 1;
                         raincoat -= 1;
@@ -327,24 +404,31 @@ namespace Final_Project___Buba_s_Variety
                     }
                     break;
             }
-
+            //shows the notifcation and gives a second for the User to prepare.
+            Refresh();
+            Thread.Sleep(1000);
+            custNotifcation.Visible = false;
         }
         private void playButton_Click(object sender, EventArgs e)
-        {
+        {//Day will end after daycycle reaches 3
+            daycycle = 1;
             Playtime.Enabled = true;
             eventPeriodLabel.Text = "Stocking period:Deactive";
             NPCEnter();
+            Stockingtime();
+            //enables timers and buttons
             CurrentCustomer.Enabled = true;
             NPC += 1;
+            totalGiveButton.Enabled = true;
             
         }
 
         private void calculatorButton_Click(object sender, EventArgs e)
-        {
+        {//shows calculator
             Form3 f3 = new Form3();
             f3.ShowDialog();
         }
-
+        //Stock buttons 
         private void stockChowButton_Click(object sender, EventArgs e)
         {
             chow += 1;
@@ -401,14 +485,19 @@ namespace Final_Project___Buba_s_Variety
         private void CurrentCustomer_Tick(object sender, EventArgs e)
         {
             firstMer -= 1;
-
+            timeLeftOutput.Text = $" {firstMer}";
+            if (firstMer ==0)
+            {
+                requestItems.Text = "you've run out of time!!!";
+                NPCEnter();
+            }
         }
 
         private void addChowButton_Click(object sender, EventArgs e)
         {
             chow -= 1;
         }
-
+        //Add buttons are no longer being used but I didn't want to delete them in case I accidentally broke the program!
         private void addRaincoatButton_Click(object sender, EventArgs e)
         {
             raincoat -= 1;

@@ -210,6 +210,7 @@
             // totalGiveButton
             // 
             totalGiveButton.BackColor = Color.SpringGreen;
+            totalGiveButton.Enabled = false;
             totalGiveButton.Location = new Point(825, 584);
             totalGiveButton.Name = "totalGiveButton";
             totalGiveButton.Size = new Size(241, 65);
@@ -308,7 +309,7 @@
             linetimeOutputLabel.Name = "linetimeOutputLabel";
             linetimeOutputLabel.Size = new Size(350, 22);
             linetimeOutputLabel.TabIndex = 22;
-            linetimeOutputLabel.Text = "3rd-5th In Line Time left: 450";
+            linetimeOutputLabel.Visible = false;
             // 
             // eventPeriodLabel
             // 
@@ -333,7 +334,7 @@
             lineTimeOutput.Name = "lineTimeOutput";
             lineTimeOutput.Size = new Size(350, 25);
             lineTimeOutput.TabIndex = 25;
-            lineTimeOutput.Text = "2nd In Line Time left: 350";
+            lineTimeOutput.Visible = false;
             // 
             // playButton
             // 
@@ -365,6 +366,7 @@
             // 
             // CurrentCustomer
             // 
+            CurrentCustomer.Interval = 800;
             CurrentCustomer.Tick += CurrentCustomer_Tick;
             // 
             // secondCustomer
