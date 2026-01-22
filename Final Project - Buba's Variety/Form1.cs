@@ -1,10 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Reflection.Metadata.Ecma335;
 
 namespace Final_Project___Buba_s_Variety
 {
     public partial class Form1 : Form
-    {
-        int coins = 100;
+    { //file path for holding high scores
+        string filePath = @"C:\Users\RayaScot583\Documents\Raya\High score.txt";
+        int coins = 150;
         int raincoat, chow, malk, plushies, treatgiver;
         int playingtime;
         int firstMer = 300;
@@ -14,10 +18,41 @@ namespace Final_Project___Buba_s_Variety
         int score;
         int NPC, daycycle;
         Random monies = new Random();
+        int days; //used to count if players want to continue with leftover money and stock
+        List<Person> Highscore = new List<Person>
+    {
+        new Person { Score = 65 }
+    };
 
         public Form1()
         {
             InitializeComponent();
+        }
+        class Person
+        {
+            //didn't really understand this code so using lesson 16 (ii) as a support!
+            
+            public int Score { get; set; }
+        }
+        private void FileUpdates()
+        {
+            if (daycycle == 3)
+            {
+                Highscore.Add(new Person { Score = score });
+                File.WriteAllText(filePath, ""); // clear file first
+
+                using (StreamWriter writer = new StreamWriter(filePath))
+                /*StreamWriter is a class that lets you write text to a file, one line at a time.
+                new StreamWriter(filePath) opens the file for writing.
+                using (...) ensures that when the code inside the braces is finished, the file is
+                properly saved and closed*/
+                {
+                    for (int i = 0; i < Highscore.Count; i++)
+                    {
+                        writer.WriteLine(Highscore[i].Score);
+                    }
+                }
+            }
         }
         private void coinManagement()
         {
@@ -179,6 +214,19 @@ namespace Final_Project___Buba_s_Variety
                     totalGiveButton.Enabled=false;
                     eventPeriodLabel.Text = "Stocking period: Active";
                     requestItems.Text = "I want";
+                    NPC = 0;
+                }else if (daycycle ==3)
+                {
+                    FileUpdates();
+                    stockChowButton.Enabled = false;
+                    stockMalkButton.Enabled = false;
+                    stockPlushiesButton.Enabled = false;
+                    stockRaincoatButton.Enabled = false;
+                    stockTreatGiverButton.Enabled = false;
+                    playButton.Enabled = true;
+                    totalGiveButton.Enabled = false;
+                    days += 1;
+                    gameFInish.Visible = true;
                 }
             }
             catch { requestItems.Text += "Error"; }
@@ -198,6 +246,7 @@ namespace Final_Project___Buba_s_Variety
             custNotifcation.Visible = true;
             Random UI = new Random();
             int npcUI = UI.Next(1,15);
+            firstMer = 300;
             switch(npcUI)
             {
                 case 1: frontCustomerImage.Image = Properties.Resources.animal_dog_115245;
@@ -411,16 +460,31 @@ namespace Final_Project___Buba_s_Variety
         }
         private void playButton_Click(object sender, EventArgs e)
         {//Day will end after daycycle reaches 3
-            daycycle = 1;
-            Playtime.Enabled = true;
-            eventPeriodLabel.Text = "Stocking period:Deactive";
-            NPCEnter();
-            Stockingtime();
-            //enables timers and buttons
-            CurrentCustomer.Enabled = true;
-            NPC += 1;
-            totalGiveButton.Enabled = true;
-            
+            if (days <= 0)
+            {
+                daycycle += 1;
+                Playtime.Enabled = true;
+                eventPeriodLabel.Text = "Stocking period:Deactive";
+                NPCEnter();
+                Stockingtime();
+                //enables timers and buttons
+                CurrentCustomer.Enabled = true;
+                NPC += 1;
+                totalGiveButton.Enabled = true;
+            } else if (days <= 1) 
+            {
+                NPC = 1;
+                totalGiveButton.Enabled = true;
+                daycycle = 1;
+                Playtime.Enabled = true;
+                eventPeriodLabel.Text = "Stocking period:Deactive";
+                NPCEnter();
+                Stockingtime();
+                //enables timers and buttons
+                CurrentCustomer.Enabled = true;
+
+            }
+
         }
 
         private void calculatorButton_Click(object sender, EventArgs e)

@@ -66,6 +66,8 @@
             debtOutput = new Label();
             TimePlayedOutput = new Label();
             label1 = new Label();
+            gameFInish = new Label();
+            resetButton = new Button();
             ((System.ComponentModel.ISupportInitialize)frontCustomerImage).BeginInit();
             SuspendLayout();
             // 
@@ -377,7 +379,7 @@
             // 
             coinOutput.Font = new Font("Jokerman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             coinOutput.ForeColor = Color.Yellow;
-            coinOutput.Location = new Point(28, 441);
+            coinOutput.Location = new Point(28, 414);
             coinOutput.Name = "coinOutput";
             coinOutput.Size = new Size(393, 57);
             coinOutput.TabIndex = 28;
@@ -390,7 +392,7 @@
             debtOutput.BackColor = SystemColors.ButtonFace;
             debtOutput.Font = new Font("Jokerman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             debtOutput.ForeColor = Color.Red;
-            debtOutput.Location = new Point(12, 487);
+            debtOutput.Location = new Point(12, 471);
             debtOutput.Name = "debtOutput";
             debtOutput.Size = new Size(409, 25);
             debtOutput.TabIndex = 29;
@@ -399,7 +401,7 @@
             // 
             // TimePlayedOutput
             // 
-            TimePlayedOutput.Location = new Point(28, 538);
+            TimePlayedOutput.Location = new Point(12, 496);
             TimePlayedOutput.Name = "TimePlayedOutput";
             TimePlayedOutput.Size = new Size(207, 25);
             TimePlayedOutput.TabIndex = 30;
@@ -416,12 +418,35 @@
             label1.TabIndex = 31;
             label1.Text = "Price guide: \r\nChow =5 to buy, 7 to sell\r\nRaincoat = 8 to buy, 10 to sell\r\nMalk = 2 to buy, 4 to sell\r\nPlusies = 4 to buy, 6 to sell\r\nTreatGiver = 12 to buy, 15 to sell.";
             // 
+            // gameFInish
+            // 
+            gameFInish.BackColor = Color.MediumOrchid;
+            gameFInish.Font = new Font("Jokerman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            gameFInish.Location = new Point(-6, 149);
+            gameFInish.Name = "gameFInish";
+            gameFInish.Size = new Size(1132, 294);
+            gameFInish.TabIndex = 32;
+            gameFInish.Text = "Game is finished!!!\r\nIf you want to continue with your leftover money and stock press Play";
+            gameFInish.TextAlign = ContentAlignment.MiddleCenter;
+            gameFInish.Visible = false;
+            // 
+            // resetButton
+            // 
+            resetButton.Location = new Point(28, 549);
+            resetButton.Name = "resetButton";
+            resetButton.Size = new Size(120, 29);
+            resetButton.TabIndex = 33;
+            resetButton.Text = "Reset";
+            resetButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
             ClientSize = new Size(1125, 661);
+            Controls.Add(resetButton);
+            Controls.Add(gameFInish);
             Controls.Add(label1);
             Controls.Add(TimePlayedOutput);
             Controls.Add(debtOutput);
@@ -501,5 +526,7 @@
         private Label debtOutput;
         private Label TimePlayedOutput;
         private Label label1;
+        private Label gameFInish;
+        private Button resetButton;
     }
 }
