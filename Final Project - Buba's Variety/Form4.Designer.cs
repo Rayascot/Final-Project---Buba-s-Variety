@@ -28,29 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Instructions));
             label1 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(352, 166);
+            label1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(150, 135);
             label1.Name = "label1";
-            label1.Size = new Size(615, 54);
+            label1.Size = new Size(704, 250);
             label1.TabIndex = 0;
-            label1.Text = "How to play:\r\nYou enter into a stocking period, press the buttons to stock certain items\r\nPress play to";
+            label1.Text = resources.GetString("label1.Text");
+            label1.TextAlign = ContentAlignment.TopCenter;
+            label1.Click += label1_Click;
             // 
             // Instructions
             // 
-            AutoScaleDimensions = new SizeF(10F, 18F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1000, 608);
             Controls.Add(label1);
-            Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
             Name = "Instructions";
             Text = "Instructions";
+            Load += Instructions_Load;
+            MouseClick += Instructions_MouseClick;
             ResumeLayout(false);
             PerformLayout();
         }

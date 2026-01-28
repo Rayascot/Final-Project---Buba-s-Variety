@@ -117,4 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>How to play:
+You enter into a stocking period, press the buttons to stock certain items
+Press play to start the game.
+Once customers enters they will subtract the amount of items they want 
+you will need give them total according to the cost of the items.
+once you serve 5 customers  there will be a stocking period  
+Press play once you finish stocking
+after 5 more customers the day will end
+ you can either continue, close or reset.
+If you get stuck click reset.
+</value>
+  </data>
 </root>

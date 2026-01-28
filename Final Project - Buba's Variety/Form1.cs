@@ -7,9 +7,11 @@ namespace Final_Project___Buba_s_Variety
 {
     public partial class Form1 : Form
     { //file path for holding high scores
-        string filePath = @"C:\Users\RayaScot583\Documents\Raya\High score.txt";
+        string filePath = @"
+C:\Users\Thatw\Documents\scores.txt";
         int coins = 150;
         int raincoat, chow, malk, plushies, treatgiver;
+        int read;
         int playingtime;
         int firstMer = 300;
         //Decided to get rid of waiting customer timers to save on remaing time.
@@ -34,26 +36,7 @@ namespace Final_Project___Buba_s_Variety
             
             public int Score { get; set; }
         }
-        private void FileUpdates()
-        {
-            if (daycycle == 3)
-            {
-                Highscore.Add(new Person { Score = score });
-                File.WriteAllText(filePath, ""); // clear file first
-
-                using (StreamWriter writer = new StreamWriter(filePath))
-                /*StreamWriter is a class that lets you write text to a file, one line at a time.
-                new StreamWriter(filePath) opens the file for writing.
-                using (...) ensures that when the code inside the braces is finished, the file is
-                properly saved and closed*/
-                {
-                    for (int i = 0; i < Highscore.Count; i++)
-                    {
-                        writer.WriteLine(Highscore[i].Score);
-                    }
-                }
-            }
-        }
+       //had to get rid of file reading because I ran out of time due to logic errors
         private void coinManagement()
         {
             coinOutput.Text = $"Coins: {coins}";
@@ -198,6 +181,7 @@ namespace Final_Project___Buba_s_Variety
                 coinManagement();
                 NPCEnter();
                 NPC += 1;
+                EndDay();
                 Random chaos = new Random();
                 int chaosnum = chaos.Next(1, 11);
                 if (chaosnum == 5)
@@ -205,33 +189,37 @@ namespace Final_Project___Buba_s_Variety
                     chaosForm CF = new chaosForm();
                     CF.ShowDialog();
                 } 
-                if (NPC==5)
-                {
-                    daycycle += 1;
-                    Stockingtime();
-                    Playtime.Enabled=false;
-                    coinManagement();
-                    totalGiveButton.Enabled=false;
-                    eventPeriodLabel.Text = "Stocking period: Active";
-                    requestItems.Text = "I want";
-                    NPC = 0;
-                }else if (daycycle ==3)
-                {
-                    FileUpdates();
-                    stockChowButton.Enabled = false;
-                    stockMalkButton.Enabled = false;
-                    stockPlushiesButton.Enabled = false;
-                    stockRaincoatButton.Enabled = false;
-                    stockTreatGiverButton.Enabled = false;
-                    playButton.Enabled = true;
-                    totalGiveButton.Enabled = false;
-                    days += 1;
-                    gameFInish.Visible = true;
-                }
+               
             }
-            catch { requestItems.Text += "Error"; }
+            catch { requestItems.Text = "Error"; }
         }
-
+        private void EndDay()
+        {
+            if (NPC == 5)
+            {
+                daycycle += 1;
+                Stockingtime();
+                Playtime.Enabled = false;
+                coinManagement();
+                totalGiveButton.Enabled = false;
+                eventPeriodLabel.Text = "Stocking period: Active";
+                requestItems.Text = "I want";
+                NPC = 0;
+            }
+            else if (daycycle == 3)
+            {
+               
+                stockChowButton.Enabled = false;
+                stockMalkButton.Enabled = false;
+                stockPlushiesButton.Enabled = false;
+                stockRaincoatButton.Enabled = false;
+                stockTreatGiverButton.Enabled = false;
+                playButton.Enabled = true;
+                totalGiveButton.Enabled = false;
+                days += 1;
+                gameFInish.Visible = true;
+            }
+        }
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -246,7 +234,7 @@ namespace Final_Project___Buba_s_Variety
             custNotifcation.Visible = true;
             Random UI = new Random();
             int npcUI = UI.Next(1,15);
-            firstMer = 300;
+            firstMer = 200;
             switch(npcUI)
             {
                 case 1: frontCustomerImage.Image = Properties.Resources.animal_dog_115245;
@@ -460,7 +448,7 @@ namespace Final_Project___Buba_s_Variety
         }
         private void playButton_Click(object sender, EventArgs e)
         {//Day will end after daycycle reaches 3
-            if (days <= 0)
+            if (days == 0 && daycycle == 0)
             {
                 daycycle += 1;
                 Playtime.Enabled = true;
@@ -471,7 +459,7 @@ namespace Final_Project___Buba_s_Variety
                 CurrentCustomer.Enabled = true;
                 NPC += 1;
                 totalGiveButton.Enabled = true;
-            } else if (days <= 1) 
+            } else if (days == 1 || daycycle ==3) 
             {
                 NPC = 1;
                 totalGiveButton.Enabled = true;
@@ -483,8 +471,20 @@ namespace Final_Project___Buba_s_Variety
                 //enables timers and buttons
                 CurrentCustomer.Enabled = true;
 
-            }
+            } else
+            {
 
+                NPC = 1;
+                totalGiveButton.Enabled = true;
+                daycycle += 1;
+                Playtime.Enabled = true;
+                eventPeriodLabel.Text = "Stocking period:Deactive";
+                NPCEnter();
+                Stockingtime();
+                //enables timers and buttons
+                CurrentCustomer.Enabled = true;
+            }
+            EndDay();
         }
 
         private void calculatorButton_Click(object sender, EventArgs e)
