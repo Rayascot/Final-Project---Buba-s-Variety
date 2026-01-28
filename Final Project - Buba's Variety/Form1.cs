@@ -1,3 +1,10 @@
+
+/*Raya Scott
+ * Buba's Variety
+ * 
+ * 
+ * 
+ */ 
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,12 +40,12 @@ C:\Users\Thatw\Documents\scores.txt";
         class Person
         {
             //didn't really understand this code so using lesson 16 (ii) as a support!
-            
+
             public int Score { get; set; }
         }
-       //had to get rid of file reading because I ran out of time due to logic errors
+        //had to get rid of file reading because I ran out of time due to logic errors
         private void coinManagement()
-        {
+        {//makes sure users can't get into deep debt
             coinOutput.Text = $"Coins: {coins}";
             if (coins == 0)
             {
@@ -60,9 +67,12 @@ C:\Users\Thatw\Documents\scores.txt";
                 coinOutput.Text = $"Coins: -{coins}";
             }
 
-        } 
+        }
+
+
         private void Stockingtime()
-        { if (daycycle == 2)
+        {//stock 
+            if (daycycle == 2 || daycycle == 0)
             {
                 stockChowButton.Enabled = true;
                 stockMalkButton.Enabled = true;
@@ -81,6 +91,7 @@ C:\Users\Thatw\Documents\scores.txt";
         }
         private void button7_Click(object sender, EventArgs e)
         {//total button
+            // makes sure that user input matches what case they are getting 
             try
             {
                 UserTotal = Convert.ToInt32(totalTextBox.Text);
@@ -188,8 +199,8 @@ C:\Users\Thatw\Documents\scores.txt";
                 {
                     chaosForm CF = new chaosForm();
                     CF.ShowDialog();
-                } 
-               
+                }
+
             }
             catch { requestItems.Text = "Error"; }
         }
@@ -207,8 +218,8 @@ C:\Users\Thatw\Documents\scores.txt";
                 NPC = 0;
             }
             else if (daycycle == 3)
-            {
-               
+            {// set to end day and add score and time played
+
                 stockChowButton.Enabled = false;
                 stockMalkButton.Enabled = false;
                 stockPlushiesButton.Enabled = false;
@@ -217,7 +228,10 @@ C:\Users\Thatw\Documents\scores.txt";
                 playButton.Enabled = true;
                 totalGiveButton.Enabled = false;
                 days += 1;
+                gameFInish.Text += $"\n {score}" + $"\n {playingtime}";
                 gameFInish.Visible = true;
+                ResetTime();
+                coinManagement();
             }
         }
         private void label2_Click(object sender, EventArgs e)
@@ -233,50 +247,64 @@ C:\Users\Thatw\Documents\scores.txt";
         { //output to say if a customer has entered the shop
             custNotifcation.Visible = true;
             Random UI = new Random();
-            int npcUI = UI.Next(1,15);
+            int npcUI = UI.Next(1, 15);
             firstMer = 200;
-            switch(npcUI)
+            switch (npcUI)
             {
-                case 1: frontCustomerImage.Image = Properties.Resources.animal_dog_115245;
+                case 1:
+                    frontCustomerImage.Image = Properties.Resources.animal_dog_115245;
                     customerName.Text = "PupperMan";
                     break;
-                case 2: frontCustomerImage.Image = Properties.Resources.bear_wild_animal_wildlife_nature_big_fur_icon_127304;
+                case 2:
+                    frontCustomerImage.Image = Properties.Resources.bear_wild_animal_wildlife_nature_big_fur_icon_127304;
                     customerName.Text = "Goldy";
                     break;
-                case 3: frontCustomerImage.Image = Properties.Resources.black_cat_halloween_icon_155986;
+                case 3:
+                    frontCustomerImage.Image = Properties.Resources.black_cat_halloween_icon_155986;
                     customerName.Text = "Lucky";
                     break;
-                case 4: frontCustomerImage.Image = Properties.Resources.fox_scarf_icon_159308;
+                case 4:
+                    frontCustomerImage.Image = Properties.Resources.fox_scarf_icon_159308;
                     customerName.Text = "Snooch";
                     break;
-                case 5: frontCustomerImage.Image = Properties.Resources._94_85291;
+                case 5:
+                    frontCustomerImage.Image = Properties.Resources._94_85291;
                     customerName.Text = "Uni";
                     break;
-                case 6: frontCustomerImage.Image = Properties.Resources.iconfinder_dog_4591896_122115;
+                case 6:
+                    frontCustomerImage.Image = Properties.Resources.iconfinder_dog_4591896_122115;
                     customerName.Text = "Tism";
                     break;
-                case 7: frontCustomerImage.Image = Properties.Resources.valentine_teddy_bear_love_valentines_romantic_gift_icon_179616;
+                case 7:
+                    frontCustomerImage.Image = Properties.Resources.valentine_teddy_bear_love_valentines_romantic_gift_icon_179616;
                     customerName.Text = "Val";
                     break;
-                case 8: frontCustomerImage.Image = Properties.Resources._10_info_cat_icon_icons_com_76686;
+                case 8:
+                    frontCustomerImage.Image = Properties.Resources._10_info_cat_icon_icons_com_76686;
                     customerName.Text = "Fluff";
                     break;
-                case 9: frontCustomerImage.Image = Properties.Resources.iconfinder_husky_dog_4591888_122123;
+                case 9:
+                    frontCustomerImage.Image = Properties.Resources.iconfinder_husky_dog_4591888_122123;
                     customerName.Text = "Cloudy & Meatballs";
                     break;
-                case 10: frontCustomerImage.Image = Properties.Resources._446foxface2_100697;
+                case 10:
+                    frontCustomerImage.Image = Properties.Resources._446foxface2_100697;
                     customerName.Text = "Impulsive";
                     break;
-                case 11: frontCustomerImage.Image = Properties.Resources._39_85225;
+                case 11:
+                    frontCustomerImage.Image = Properties.Resources._39_85225;
                     customerName.Text = "Lil dude";
                     break;
-                case 12: frontCustomerImage.Image = Properties.Resources.dogbaby_119594;
+                case 12:
+                    frontCustomerImage.Image = Properties.Resources.dogbaby_119594;
                     customerName.Text = "Child";
                     break;
-                case 13: frontCustomerImage.Image = Properties.Resources.iconfinder_bird_4591877_122110;
+                case 13:
+                    frontCustomerImage.Image = Properties.Resources.iconfinder_bird_4591877_122110;
                     customerName.Text = "The great";
                     break;
-                case 14: frontCustomerImage.Image = Properties.Resources._22226horseface_98740;
+                case 14:
+                    frontCustomerImage.Image = Properties.Resources._22226horseface_98740;
                     customerName.Text = "Grain";
                     break;
             }
@@ -287,18 +315,19 @@ C:\Users\Thatw\Documents\scores.txt";
             {
                 case (1):
                     requestItems.Text += "\n" + "Chow X2" + "\n" + "TreatGiver X1";
-                    if (chow >=2 && treatgiver >=1)
+                    if (chow >= 2 && treatgiver >= 1)
                     {
                         chow -= 2;
                         treatgiver -= 2;
                         chowOutput.Text = $"Chow: X{chow}";
                         treatgiverOutput.Text = $"Treatgiver: X{treatgiver}";
-                    } else
+                    }
+                    else
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
-                        
+
                     }
-                        break;
+                    break;
                 case (2):
                     requestItems.Text += "\n" + "Raincoat X1" + "\n" + "Malk X2" + "\n" + "Plushie X1";
                     if (raincoat >= 1 && malk >= 2 && plushies >= 1)
@@ -309,29 +338,31 @@ C:\Users\Thatw\Documents\scores.txt";
                         RaincoatOutput.Text = $"Raincoat: X{raincoat}";
                         malkOutput.Text = $"Malk: X{malk}";
                         plushiesOutput.Text = $"Plushies: X{plushies}";
-                    }else
+                    }
+                    else
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
-                        
+
                     }
-                        break;
+                    break;
                 case (3):
                     requestItems.Text += "\n" + "Chow X3" + "\n" + "Plushie X2";
-                    if (chow >=3 && plushies>=2)
+                    if (chow >= 3 && plushies >= 2)
                     {
                         chow -= 3;
                         plushies -= 2;
                         chowOutput.Text = $"Chow: X{chow}";
                         plushiesOutput.Text = $"Plushies: X{plushies}";
-                    } else
+                    }
+                    else
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
-                       
+
                     }
-                        break;
+                    break;
                 case (4):
                     requestItems.Text += "\n" + "Chow X1" + "\n" + "Malk X2" + "\n" + "Plushie X1";
-                    if (chow >=1&& malk>=2&& plushies>=1)
+                    if (chow >= 1 && malk >= 2 && plushies >= 1)
                     {
                         chow -= 1;
                         malk -= 2;
@@ -339,41 +370,44 @@ C:\Users\Thatw\Documents\scores.txt";
                         chowOutput.Text = $"Chow: X{chow}";
                         plushiesOutput.Text = $"Plushies: X{plushies}";
                         malkOutput.Text = $"Malk: X{malk}";
-                    } else 
+                    }
+                    else
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
-                        
+
                     }
-                        break;
+                    break;
                 case (5):
                     requestItems.Text += "\n" + "Treatgiver X2";
-                    if (treatgiver>=2)
+                    if (treatgiver >= 2)
                     {
                         treatgiver -= 2;
                         treatgiverOutput.Text = $"Treatgiver: X{treatgiver}";
-                    } else
+                    }
+                    else
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
-                       
+
                     }
-                        break;
+                    break;
                 case (6):
                     requestItems.Text += "\n" + "Chow X2" + "\n" + "Raincoat X1";
-                    if (chow >=2 && raincoat>=1)
+                    if (chow >= 2 && raincoat >= 1)
                     {
                         chow -= 2;
                         raincoat -= 1;
                         chowOutput.Text = $"Chow: X{chow}";
                         RaincoatOutput.Text = $"Raincoat: X{raincoat}";
-                    } else
+                    }
+                    else
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
-                       
+
                     }
-                        break;
+                    break;
                 case (7):
                     requestItems.Text += "\n" + "Chow X2" + "\n" + "Raincoat X2" + "\n" + "Malk X4" + "\n" + "Plushie X1";
-                    if (chow>=2 && raincoat>=2&& malk >=4&& plushies>=1)
+                    if (chow >= 2 && raincoat >= 2 && malk >= 4 && plushies >= 1)
                     {
                         chow -= 2;
                         raincoat -= 2;
@@ -383,29 +417,31 @@ C:\Users\Thatw\Documents\scores.txt";
                         plushiesOutput.Text = $"Plushies: X{plushies}";
                         malkOutput.Text = $"Malk: X{malk}";
                         RaincoatOutput.Text = $"Raincoat: X{raincoat}";
-                    } else
+                    }
+                    else
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
 
                     }
-                        break;
+                    break;
                 case (8):
                     requestItems.Text += "\n" + "Chow X4" + "\n" + "Malk x1";
-                    if (chow >=4&& malk>=1)
+                    if (chow >= 4 && malk >= 1)
                     {
                         chow -= 4;
                         malk -= 1;
                         chowOutput.Text = $"Chow: X{chow}";
                         malkOutput.Text = $"Malk: X{malk}";
-                    }else
+                    }
+                    else
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
-                       
+
                     }
-                        break;
+                    break;
                 case (9):
                     requestItems.Text += "\n" + "Chow X1" + "\n" + "Raincoat X1" + "\n" + "Treatgiver X1";
-                    if (chow>=1&&raincoat>=1 &&treatgiver>=1)
+                    if (chow >= 1 && raincoat >= 1 && treatgiver >= 1)
                     {
                         chow -= 1;
                         raincoat -= 1;
@@ -413,15 +449,16 @@ C:\Users\Thatw\Documents\scores.txt";
                         chowOutput.Text = $"Chow: X{chow}";
                         treatgiverOutput.Text = $"Treatgiver: X{treatgiver}";
                         RaincoatOutput.Text = $"Raincoat: X{raincoat}";
-                    }else
+                    }
+                    else
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
-                        
+
                     }
-                        break;
+                    break;
                 case (10):
                     requestItems.Text += "\n" + "Chow X1" + "\n" + "Raincoat X1" + "\n" + "Malk X1" + "\n" + "Plushies X1" + "\n" + "Treatgiver X1";
-                    if (chow >= 1 && raincoat >= 1 && treatgiver >= 1 && malk >=1 &&plushies>=1)
+                    if (chow >= 1 && raincoat >= 1 && treatgiver >= 1 && malk >= 1 && plushies >= 1)
                     {
                         chow -= 1;
                         raincoat -= 1;
@@ -437,7 +474,7 @@ C:\Users\Thatw\Documents\scores.txt";
                     else
                     {
                         requestItems.Text = "Uh oh! you didn't stock enough! The customer is unhappy now :(";
-                      
+
                     }
                     break;
             }
@@ -459,7 +496,8 @@ C:\Users\Thatw\Documents\scores.txt";
                 CurrentCustomer.Enabled = true;
                 NPC += 1;
                 totalGiveButton.Enabled = true;
-            } else if (days == 1 || daycycle ==3) 
+            }
+            else if (days == 1 || daycycle == 3)
             {
                 NPC = 1;
                 totalGiveButton.Enabled = true;
@@ -471,7 +509,8 @@ C:\Users\Thatw\Documents\scores.txt";
                 //enables timers and buttons
                 CurrentCustomer.Enabled = true;
 
-            } else
+            }
+            else
             {
 
                 NPC = 1;
@@ -550,7 +589,7 @@ C:\Users\Thatw\Documents\scores.txt";
         {
             firstMer -= 1;
             timeLeftOutput.Text = $" {firstMer}";
-            if (firstMer ==0)
+            if (firstMer == 0)
             {
                 requestItems.Text = "you've run out of time!!!";
                 NPCEnter();
@@ -581,5 +620,34 @@ C:\Users\Thatw\Documents\scores.txt";
         {
             treatgiver -= 1;
         }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {//reset everything for user
+            treatgiver = 0;
+            chow = 0;
+            plushies = 0;
+            malk = 0;
+            raincoat = 0;
+            playingtime = 0;
+            coins = 150;
+            ResetTime();
+        }
+        private void ResetTime()
+        {//made to reset the game for end of day or if the player gets stuck
+            debtOutput.Visible = false;
+            plushiesOutput.Text = $"Plushies: X{plushies}";
+            treatgiverOutput.Text = $"TreatGiver: X{treatgiver}";
+            coinManagement();
+            RaincoatOutput.Text = $"Raincoat: X{raincoat}";
+            malkOutput.Text = $"Malk: X{malk}";
+            chowOutput.Text = $"Chow: X{chow}";
+            gameFInish.Visible = false;
+            daycycle = 0;
+            days = 0;
+            NPC = 0;
+            score = 0;
+            Stockingtime();
+        }
+
     }
 }

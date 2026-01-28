@@ -84,7 +84,7 @@
             // 
             // customerName
             // 
-            customerName.Font = new Font("Jokerman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            customerName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             customerName.Location = new Point(554, 513);
             customerName.Name = "customerName";
             customerName.Size = new Size(501, 39);
@@ -225,7 +225,7 @@
             // 
             totalTextBox.Location = new Point(674, 619);
             totalTextBox.Name = "totalTextBox";
-            totalTextBox.Size = new Size(145, 30);
+            totalTextBox.Size = new Size(145, 21);
             totalTextBox.TabIndex = 14;
             // 
             // label6
@@ -235,7 +235,7 @@
             label6.ForeColor = Color.DeepSkyBlue;
             label6.Location = new Point(694, 589);
             label6.Name = "label6";
-            label6.Size = new Size(89, 22);
+            label6.Size = new Size(62, 15);
             label6.TabIndex = 15;
             label6.Text = "Enter total";
             // 
@@ -341,7 +341,7 @@
             // playButton
             // 
             playButton.BackColor = Color.MidnightBlue;
-            playButton.Font = new Font("Jokerman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            playButton.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             playButton.ForeColor = Color.White;
             playButton.Location = new Point(28, 584);
             playButton.Name = "playButton";
@@ -356,7 +356,7 @@
             custNotifcation.AutoSize = true;
             custNotifcation.Location = new Point(28, 299);
             custNotifcation.Name = "custNotifcation";
-            custNotifcation.Size = new Size(251, 22);
+            custNotifcation.Size = new Size(183, 15);
             custNotifcation.TabIndex = 27;
             custNotifcation.Text = "A Customer Has entered the line";
             custNotifcation.Visible = false;
@@ -377,24 +377,24 @@
             // 
             // coinOutput
             // 
-            coinOutput.Font = new Font("Jokerman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            coinOutput.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             coinOutput.ForeColor = Color.Yellow;
             coinOutput.Location = new Point(28, 414);
             coinOutput.Name = "coinOutput";
             coinOutput.Size = new Size(393, 57);
             coinOutput.TabIndex = 28;
-            coinOutput.Text = "Coins: 100";
+            coinOutput.Text = "Coins: 150";
             coinOutput.Click += coinOutput_Click;
             // 
             // debtOutput
             // 
             debtOutput.AutoSize = true;
             debtOutput.BackColor = SystemColors.ButtonFace;
-            debtOutput.Font = new Font("Jokerman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            debtOutput.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             debtOutput.ForeColor = Color.Red;
             debtOutput.Location = new Point(12, 471);
             debtOutput.Name = "debtOutput";
-            debtOutput.Size = new Size(409, 25);
+            debtOutput.Size = new Size(298, 17);
             debtOutput.TabIndex = 29;
             debtOutput.Text = "Uh oh your in debt!! Be more careful next time!";
             debtOutput.Visible = false;
@@ -414,15 +414,15 @@
             label1.ForeColor = Color.Yellow;
             label1.Location = new Point(171, 515);
             label1.Name = "label1";
-            label1.Size = new Size(250, 132);
+            label1.Size = new Size(183, 90);
             label1.TabIndex = 31;
             label1.Text = "Price guide: \r\nChow =5 to buy, 7 to sell\r\nRaincoat = 8 to buy, 10 to sell\r\nMalk = 2 to buy, 4 to sell\r\nPlusies = 4 to buy, 6 to sell\r\nTreatGiver = 12 to buy, 15 to sell.";
             // 
             // gameFInish
             // 
             gameFInish.BackColor = Color.MediumOrchid;
-            gameFInish.Font = new Font("Jokerman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            gameFInish.Location = new Point(-6, 149);
+            gameFInish.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            gameFInish.Location = new Point(-3, 177);
             gameFInish.Name = "gameFInish";
             gameFInish.Size = new Size(1132, 294);
             gameFInish.TabIndex = 32;
@@ -438,10 +438,11 @@
             resetButton.TabIndex = 33;
             resetButton.Text = "Reset";
             resetButton.UseVisualStyleBackColor = true;
+            resetButton.Click += resetButton_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(9F, 22F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
             ClientSize = new Size(1125, 661);
@@ -479,7 +480,7 @@
             Controls.Add(chowOutput);
             Controls.Add(customerName);
             Controls.Add(frontCustomerImage);
-            Font = new Font("Jokerman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Form1";
